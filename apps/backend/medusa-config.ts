@@ -16,11 +16,9 @@ module.exports = defineConfig({
       }
     } : undefined,
     http: {
-      host: process.env.HOST || '0.0.0.0',
-      port: parseInt(process.env.PORT || '9000', 10),
       storeCors: process.env.STORE_CORS!,
       adminCors: process.env.ADMIN_CORS!,
-      // @ts-expect-error: vendorCors is not a valid config
+      // @ts-expect-error - vendorCors is a custom property for vendor routes
       vendorCors: process.env.VENDOR_CORS!,
       authCors: process.env.AUTH_CORS!,
       jwtSecret: process.env.JWT_SECRET || 'supersecret',
