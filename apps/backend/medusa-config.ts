@@ -16,9 +16,10 @@ module.exports = defineConfig({
       }
     } : undefined,
     http: {
+      host: process.env.HOST || '0.0.0.0',
+      port: process.env.PORT ? Number(process.env.PORT) : 9000,
       storeCors: process.env.STORE_CORS!,
       adminCors: process.env.ADMIN_CORS!,
-
       vendorCors: process.env.VENDOR_CORS!,
       authCors: process.env.AUTH_CORS!,
       jwtSecret: process.env.JWT_SECRET || 'supersecret',
