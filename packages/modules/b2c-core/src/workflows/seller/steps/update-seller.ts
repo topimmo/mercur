@@ -31,6 +31,14 @@ export const updateSellerStep = createStep(
       });
     }
 
+    // Emit seller updated event for Algolia sync
+    await eventBus.emit({
+      name: SellerEvents.SELLER_UPDATED,
+      data: {
+        id: input.id,
+      },
+    });
+
     return new StepResponse(updatedSellers, previousData as UpdateSellerDTO);
   },
   async (previousData: UpdateSellerDTO, { container }) => {

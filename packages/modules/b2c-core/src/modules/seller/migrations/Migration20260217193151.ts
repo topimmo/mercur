@@ -35,7 +35,13 @@ export class Migration20260217193151 extends Migration {
       ON UPDATE CASCADE ON DELETE CASCADE;
     `);
 
-    // Add city_id and neighborhood_id to seller table
+    // Drop the old city text column if it exists
+    this.addSql(`
+      ALTER TABLE IF EXISTS "seller" 
+      DROP COLUMN IF EXISTS "city";
+    `);
+
+    // Add new columns to seller table
     this.addSql(`
       ALTER TABLE IF EXISTS "seller" 
       ADD COLUMN IF NOT EXISTS "approved" boolean NOT NULL DEFAULT false,
@@ -90,13 +96,19 @@ export class Migration20260217193151 extends Migration {
       `ALTER TABLE "seller" DROP CONSTRAINT IF EXISTS "seller_city_id_foreign";`
     );
 
-    // Remove columns from seller
+    // Remove new columns from seller
     this.addSql(`ALTER TABLE "seller" DROP COLUMN IF EXISTS "neighborhood_id";`);
     this.addSql(`ALTER TABLE "seller" DROP COLUMN IF EXISTS "city_id";`);
     this.addSql(
       `ALTER TABLE "seller" DROP COLUMN IF EXISTS "subscription_status";`
     );
     this.addSql(`ALTER TABLE "seller" DROP COLUMN IF EXISTS "approved";`);
+
+    // Restore old city text column
+    this.addSql(`
+      ALTER TABLE "seller" 
+      ADD COLUMN IF NOT EXISTS "city" text NULL;
+    `);
 
     // Remove foreign key from neighborhood
     this.addSql(

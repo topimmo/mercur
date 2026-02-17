@@ -21,7 +21,6 @@ export const Seller = model.define("seller", {
   email: model.text().nullable(),
   phone: model.text().nullable(),
   address_line: model.text().nullable(),
-  city: model.text().nullable(),
   state: model.text().nullable(),
   postal_code: model.text().nullable(),
   country_code: model.text().nullable(),

@@ -1,4 +1,4 @@
-import { MemberInviteDTO, MemberRole, SellerDTO, StoreStatus } from './common'
+import { MemberInviteDTO, MemberRole, SellerDTO, StoreStatus, SubscriptionStatus } from './common'
 
 export interface CreateSellerDTO
   extends Omit<
@@ -15,7 +15,6 @@ export interface UpdateSellerDTO {
   phone?: string
   description?: string
   address_line?: string
-  city?: string
   state?: string
   postal_code?: string
   country_code?: string
@@ -23,6 +22,10 @@ export interface UpdateSellerDTO {
   handle?: string
   photo?: string
   store_status?: StoreStatus
+  city_id?: string | null
+  neighborhood_id?: string | null
+  approved?: boolean
+  subscription_status?: SubscriptionStatus
 }
 
 export interface CreateMemberDTO {

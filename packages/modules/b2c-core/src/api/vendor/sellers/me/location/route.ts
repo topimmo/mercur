@@ -1,7 +1,7 @@
 import { AuthenticatedMedusaRequest, MedusaResponse } from "@medusajs/framework";
 import { ContainerRegistrationKeys, MedusaError } from "@medusajs/framework/utils";
 
-import { SELLER_MODULE } from "../../../../../modules/seller";
+import { SELLER_MODULE, SellerModuleService } from "../../../../../modules/seller";
 import { fetchSellerByAuthActorId } from "../../../../../shared/infra/http/utils/seller";
 import { updateSellerWorkflow } from "../../../../../workflows/seller/workflows";
 import { VendorSetLocationInputType } from "./validators";
@@ -47,7 +47,7 @@ export const PUT = async (
   req: AuthenticatedMedusaRequest<VendorSetLocationInputType>,
   res: MedusaResponse
 ) => {
-  const sellerModuleService = req.scope.resolve(SELLER_MODULE);
+  const sellerModuleService: SellerModuleService = req.scope.resolve(SELLER_MODULE);
   const query = req.scope.resolve(ContainerRegistrationKeys.QUERY);
 
   const { id } = await fetchSellerByAuthActorId(

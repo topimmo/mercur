@@ -1,6 +1,4 @@
-import { defineMiddlewares } from "@medusajs/medusa";
-import { validateAndTransformBody } from "@medusajs/medusa/api/utils/validate-body";
-import { validateAndTransformQuery } from "@medusajs/medusa/api/utils/validate-query";
+import { defineMiddlewares, validateAndTransformBody, validateAndTransformQuery } from "@medusajs/framework";
 import {
   AdminCityParams,
   AdminCreateCity,

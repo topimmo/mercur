@@ -1,5 +1,4 @@
-import { defineMiddlewares } from "@medusajs/medusa";
-import { validateAndTransformBody } from "@medusajs/medusa/api/utils/validate-body";
+import { defineMiddlewares, validateAndTransformBody } from "@medusajs/framework";
 import { VendorSetLocationInput } from "./validators";
 
 export default defineMiddlewares({

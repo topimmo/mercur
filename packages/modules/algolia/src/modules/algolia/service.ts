@@ -33,8 +33,7 @@ export const defaultReviewSettings: IndexSettings = {
 
 export const defaultSellerSettings: IndexSettings = {
   searchableAttributes: ['name', 'description'],
-  attributesForFaceting: ['filterOnly(city_id)', 'filterOnly(neighborhood_id)'],
-  filters: 'approved:true AND subscription_status:ACTIVE'
+  attributesForFaceting: ['filterOnly(city_id)', 'filterOnly(neighborhood_id)']
 }
 
 class AlgoliaModuleService {

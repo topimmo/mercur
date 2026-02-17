@@ -45,7 +45,6 @@ export const AdminUpdateSeller = z
     email: z.string().email().optional(),
     phone: z.string().optional(),
     address_line: z.string().optional(),
-    city: z.string().optional(),
     state: z.string().optional(),
     postal_code: z.string().optional(),
     country_code: z.string().optional(),

@@ -1,5 +1,4 @@
-import { defineMiddlewares } from "@medusajs/medusa";
-import { validateAndTransformQuery } from "@medusajs/medusa/api/utils/validate-query";
+import { defineMiddlewares, validateAndTransformQuery } from "@medusajs/framework";
 import { StoreCityParams } from "./validators";
 
 export default defineMiddlewares({
