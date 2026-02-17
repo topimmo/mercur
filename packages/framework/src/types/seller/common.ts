@@ -4,6 +4,13 @@ export enum StoreStatus {
   SUSPENDED = "SUSPENDED",
 }
 
+export enum SubscriptionStatus {
+  ACTIVE = "ACTIVE",
+  INACTIVE = "INACTIVE",
+  EXPIRED = "EXPIRED",
+  CANCELLED = "CANCELLED",
+}
+
 export type SellerDTO = {
   id: string;
   store_status: StoreStatus;
