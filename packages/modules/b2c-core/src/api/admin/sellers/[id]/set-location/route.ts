@@ -1,7 +1,7 @@
 import { MedusaRequest, MedusaResponse } from "@medusajs/framework";
 import { ContainerRegistrationKeys, MedusaError } from "@medusajs/framework/utils";
 
-import { SELLER_MODULE } from "../../../../../modules/seller";
+import { SELLER_MODULE, SellerModuleService } from "../../../../../modules/seller";
 import { updateSellerWorkflow } from "../../../../../workflows/seller/workflows";
 import { AdminSetSellerLocationType } from "./validators";
 
@@ -53,7 +53,7 @@ export const POST = async (
   req: MedusaRequest<AdminSetSellerLocationType>,
   res: MedusaResponse
 ) => {
-  const sellerModuleService = req.scope.resolve(SELLER_MODULE);
+  const sellerModuleService = req.scope.resolve<SellerModuleService>(SELLER_MODULE);
   const query = req.scope.resolve(ContainerRegistrationKeys.QUERY);
   const { id } = req.params;
   const { city_id, neighborhood_id } = req.validatedBody;

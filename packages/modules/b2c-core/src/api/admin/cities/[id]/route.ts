@@ -1,7 +1,7 @@
 import { MedusaRequest, MedusaResponse } from "@medusajs/framework";
 import { ContainerRegistrationKeys } from "@medusajs/framework/utils";
 
-import { SELLER_MODULE } from "../../../../modules/seller";
+import { SELLER_MODULE, SellerModuleService } from "../../../../modules/seller";
 import { AdminUpdateCityType } from "../validators";
 
 /**
@@ -94,7 +94,7 @@ export const POST = async (
   req: MedusaRequest<AdminUpdateCityType>,
   res: MedusaResponse
 ) => {
-  const sellerModuleService = req.scope.resolve(SELLER_MODULE);
+  const sellerModuleService = req.scope.resolve<SellerModuleService>(SELLER_MODULE);
   const query = req.scope.resolve(ContainerRegistrationKeys.QUERY);
 
   await sellerModuleService.updateCities({
@@ -144,7 +144,7 @@ export const POST = async (
  *   - cookie_auth: []
  */
 export const DELETE = async (req: MedusaRequest, res: MedusaResponse) => {
-  const sellerModuleService = req.scope.resolve(SELLER_MODULE);
+  const sellerModuleService = req.scope.resolve<SellerModuleService>(SELLER_MODULE);
 
   await sellerModuleService.softDeleteCities(req.params.id);
 

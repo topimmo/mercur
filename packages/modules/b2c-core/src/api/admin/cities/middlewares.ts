@@ -4,13 +4,14 @@ import {
   AdminCreateCity,
   AdminUpdateCity,
 } from "./validators";
+import { adminCityQueryConfig } from "./query-config";
 
 export default defineMiddlewares({
   routes: [
     {
       matcher: "/admin/cities",
       method: "GET",
-      middlewares: [validateAndTransformQuery(AdminCityParams)],
+      middlewares: [validateAndTransformQuery(AdminCityParams, adminCityQueryConfig.list)],
     },
     {
       matcher: "/admin/cities",
