@@ -31,6 +31,11 @@ export const defaultReviewSettings: IndexSettings = {
   attributesForFaceting: ['filterOnly(reference_id)', 'filterOnly(reference)']
 }
 
+export const defaultSellerSettings: IndexSettings = {
+  searchableAttributes: ['name', 'description'],
+  attributesForFaceting: ['filterOnly(city_id)', 'filterOnly(neighborhood_id)']
+}
+
 class AlgoliaModuleService {
   private options_: ModuleOptions
   private algolia_: Algoliasearch

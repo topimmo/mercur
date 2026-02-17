@@ -113,9 +113,6 @@ export async function GET(
  *           address_line:
  *             type: string
  *             description: Seller address line.
- *           city:
- *             type: string
- *             description: Seller city.
  *           state:
  *             type: string
  *             description: Seller state.

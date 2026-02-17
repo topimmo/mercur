@@ -4,9 +4,18 @@ export enum StoreStatus {
   SUSPENDED = "SUSPENDED",
 }
 
+export enum SubscriptionStatus {
+  ACTIVE = "ACTIVE",
+  INACTIVE = "INACTIVE",
+  EXPIRED = "EXPIRED",
+  CANCELLED = "CANCELLED",
+}
+
 export type SellerDTO = {
   id: string;
   store_status: StoreStatus;
+  approved: boolean;
+  subscription_status: SubscriptionStatus;
   created_at: Date;
   updated_at: Date;
   name: string;
@@ -14,13 +23,14 @@ export type SellerDTO = {
   phone: string | null;
   description: string | null;
   address_line: string | null;
-  city: string | null;
   state: string | null;
   postal_code: string | null;
   country_code: string | null;
   tax_id: string | null;
   handle: string;
   photo: string | null;
+  city_id: string | null;
+  neighborhood_id: string | null;
   members?: Partial<MemberDTO>[];
 };
 
