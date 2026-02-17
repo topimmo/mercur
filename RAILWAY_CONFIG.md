@@ -66,4 +66,4 @@ For detailed explanation, alternatives, and troubleshooting, see [RAILWAY_DEPLOY
 
 ---
 
-**Need Help?** Join [Mercur Discord](https://discord.gg/NTWNa49S)
+**Need Help?** Join the [Mercur Discord community](https://discord.gg/NTWNa49S) for support

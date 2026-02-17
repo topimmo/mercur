@@ -243,7 +243,7 @@ If you encounter issues:
 2. Verify the root directory setting
 3. Review Railway build logs for the actual error
 4. Test the exact build sequence locally first
-5. Join [Mercur Discord](https://discord.gg/NTWNa49S) for community support
+5. Join the [Mercur Discord community](https://discord.gg/NTWNa49S) for support
 
 ## Summary
 
