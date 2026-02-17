@@ -10,16 +10,18 @@ import { vendorCampaignsMiddlewares } from "./campaigns/middlewares";
 import { vendorCors } from "./cors";
 import { vendorCustomerGroupsMiddlewares } from "./customer-groups/middlewares";
 import { vendorCustomersMiddlewares } from "./customers/middlewares";
-import { vendorFulfillmentProvidersMiddlewares } from "./fulfillment-providers/middlewares";
-import { vendorFulfillmentSetsMiddlewares } from "./fulfillment-sets/middlewares";
+// Disabled for directory-only mode
+// import { vendorFulfillmentProvidersMiddlewares } from "./fulfillment-providers/middlewares";
+// import { vendorFulfillmentSetsMiddlewares } from "./fulfillment-sets/middlewares";
 import { vendorInventoryItemsMiddlewares } from "./inventory-items/middlewares";
 import { vendorInvitesMiddlewares } from "./invites/middlewares";
 import { vendorMeMiddlewares } from "./me/middlewares";
 import { vendorMembersMiddlewares } from "./members/middlewares";
 import { vendorNotificationMiddlewares } from "./notifications/middlewares";
-import { vendorOrderMiddlewares } from "./orders/middlewares";
-import { vendorPayoutAccountMiddlewares } from "./payout-account/middlewares";
-import { vendorPayoutMiddlewares } from "./payouts/middlewares";
+// Disabled for directory-only mode
+// import { vendorOrderMiddlewares } from "./orders/middlewares";
+// import { vendorPayoutAccountMiddlewares } from "./payout-account/middlewares";
+// import { vendorPayoutMiddlewares } from "./payouts/middlewares";
 import { vendorPriceListsMiddlewares } from "./price-lists/middlewares";
 import { vendorPricePreferencesRoutesMiddlewares } from "./price-preferences/middlewares";
 import { vendorProductCategoriesMiddlewares } from "./product-categories/middlewares";
@@ -30,11 +32,13 @@ import { vendorProductsMiddlewares } from "./products/middlewares";
 import { vendorPromotionsMiddlewares } from "./promotions/middlewares";
 import { vendorRegionsMiddlewares } from "./regions/middlewares";
 import { vendorReservationsMiddlewares } from "./reservations/middlewares";
-import { vendorReturnsMiddlewares } from "./returns/middlewares";
+// Disabled for directory-only mode
+// import { vendorReturnsMiddlewares } from "./returns/middlewares";
 import { vendorSalesChannelMiddlewares } from "./sales-channels/middlewares";
 import { vendorSellersMiddlewares } from "./sellers/middlewares";
-import { vendorShippingOptionsMiddlewares } from "./shipping-options/middlewares";
-import { vendorShippingProfilesMiddlewares } from "./shipping-profiles/middlewares";
+// Disabled for directory-only mode
+// import { vendorShippingOptionsMiddlewares } from "./shipping-options/middlewares";
+// import { vendorShippingProfilesMiddlewares } from "./shipping-profiles/middlewares";
 import { vendorStatisticsMiddlewares } from "./statistics/middlewares";
 import { vendorStockLocationsMiddlewares } from "./stock-locations/middlewares";
 import { vendorStoresMiddlewares } from "./stores/middlewares";
@@ -92,13 +96,13 @@ export const vendorMiddlewares: MiddlewareRoute[] = [
   ...vendorMembersMiddlewares,
   ...vendorProductsMiddlewares,
   ...vendorInvitesMiddlewares,
-  ...vendorFulfillmentSetsMiddlewares,
+  // ...vendorFulfillmentSetsMiddlewares - disabled for directory-only mode
   ...vendorStockLocationsMiddlewares,
-  ...vendorShippingOptionsMiddlewares,
-  ...vendorPayoutAccountMiddlewares,
+  // ...vendorShippingOptionsMiddlewares - disabled for directory-only mode
+  // ...vendorPayoutAccountMiddlewares - disabled for directory-only mode
   ...vendorInventoryItemsMiddlewares,
-  ...vendorPayoutMiddlewares,
-  ...vendorOrderMiddlewares,
+  // ...vendorPayoutMiddlewares - disabled for directory-only mode
+  // ...vendorOrderMiddlewares - disabled for directory-only mode
   ...vendorInventoryItemsMiddlewares,
   ...vendorSalesChannelMiddlewares,
   ...vendorCustomersMiddlewares,
@@ -115,9 +119,9 @@ export const vendorMiddlewares: MiddlewareRoute[] = [
   ...vendorPromotionsMiddlewares,
   ...vendorCampaignsMiddlewares,
   ...vendorStatisticsMiddlewares,
-  ...vendorFulfillmentProvidersMiddlewares,
-  ...vendorReturnsMiddlewares,
-  ...vendorShippingProfilesMiddlewares,
+  // ...vendorFulfillmentProvidersMiddlewares - disabled for directory-only mode
+  // ...vendorReturnsMiddlewares - disabled for directory-only mode
+  // ...vendorShippingProfilesMiddlewares - disabled for directory-only mode
   ...vendorRegionsMiddlewares,
   ...vendorNotificationMiddlewares,
   ...vendorAttributeMiddlewares,

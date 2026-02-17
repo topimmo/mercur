@@ -1,6 +1,7 @@
 import { MiddlewareRoute } from "@medusajs/framework";
-import { storeOrderReturnRequestsMiddlewares } from "./return-request/middlewares";
+// Disabled for directory-only mode
+// import { storeOrderReturnRequestsMiddlewares } from "./return-request/middlewares";
 
 export const storeMiddlewares: MiddlewareRoute[] = [
-  ...storeOrderReturnRequestsMiddlewares,
+  // ...storeOrderReturnRequestsMiddlewares - disabled for directory-only mode
 ];

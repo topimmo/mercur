@@ -1,11 +1,14 @@
 import { MiddlewareRoute, authenticate } from "@medusajs/framework";
 
-import { storeCartsMiddlewares } from "./carts/middlewares";
-import { storeOrderSetMiddlewares } from "./order-set/middlewares";
+// Disabled for directory-only mode
+// import { storeCartsMiddlewares } from "./carts/middlewares";
+// import { storeOrderSetMiddlewares } from "./order-set/middlewares";
 import { storeProductsMiddlewares } from "./products/middlewares";
-import { storeReturnsMiddlewares } from "./returns/middlewares";
+// Disabled for directory-only mode
+// import { storeReturnsMiddlewares } from "./returns/middlewares";
 import { storeSellerMiddlewares } from "./seller/middlewares";
-import { storeShippingOptionRoutesMiddlewares } from "./shipping-options/middlewares";
+// Disabled for directory-only mode
+// import { storeShippingOptionRoutesMiddlewares } from "./shipping-options/middlewares";
 import { storeWishlistMiddlewares } from "./wishlist/middlewares";
 
 export const storeMiddlewares: MiddlewareRoute[] = [
@@ -17,11 +20,11 @@ export const storeMiddlewares: MiddlewareRoute[] = [
     matcher: "/store/return-request/*",
     middlewares: [authenticate("customer", ["bearer", "session"])],
   },
-  ...storeCartsMiddlewares,
-  ...storeOrderSetMiddlewares,
+  // ...storeCartsMiddlewares - disabled for directory-only mode
+  // ...storeOrderSetMiddlewares - disabled for directory-only mode
   ...storeProductsMiddlewares,
   ...storeSellerMiddlewares,
-  ...storeShippingOptionRoutesMiddlewares,
-  ...storeReturnsMiddlewares,
+  // ...storeShippingOptionRoutesMiddlewares - disabled for directory-only mode
+  // ...storeReturnsMiddlewares - disabled for directory-only mode
   ...storeWishlistMiddlewares,
 ];
