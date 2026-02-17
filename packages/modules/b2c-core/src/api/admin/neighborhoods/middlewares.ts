@@ -4,13 +4,14 @@ import {
   AdminNeighborhoodParams,
   AdminUpdateNeighborhood,
 } from "./validators";
+import { adminNeighborhoodQueryConfig } from "./query-config";
 
 export default defineMiddlewares({
   routes: [
     {
       matcher: "/admin/neighborhoods",
       method: "GET",
-      middlewares: [validateAndTransformQuery(AdminNeighborhoodParams)],
+      middlewares: [validateAndTransformQuery(AdminNeighborhoodParams, adminNeighborhoodQueryConfig.list)],
     },
     {
       matcher: "/admin/neighborhoods",

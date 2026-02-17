@@ -1,7 +1,7 @@
 import { MedusaRequest, MedusaResponse } from "@medusajs/framework";
 import { ContainerRegistrationKeys } from "@medusajs/framework/utils";
 
-import { SELLER_MODULE } from "../../../modules/seller";
+import { SELLER_MODULE, SellerModuleService } from "../../../modules/seller";
 import { AdminCreateCityType } from "./validators";
 
 /**
@@ -101,7 +101,7 @@ export const POST = async (
   req: MedusaRequest<AdminCreateCityType>,
   res: MedusaResponse
 ) => {
-  const sellerModuleService = req.scope.resolve(SELLER_MODULE);
+  const sellerModuleService = req.scope.resolve<SellerModuleService>(SELLER_MODULE);
 
   const city = await sellerModuleService.createCities(req.validatedBody);
 

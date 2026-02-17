@@ -1,7 +1,7 @@
 import { MedusaRequest, MedusaResponse } from "@medusajs/framework";
 import { ContainerRegistrationKeys, MedusaError } from "@medusajs/framework/utils";
 
-import { SELLER_MODULE } from "../../../../modules/seller";
+import { SELLER_MODULE, SellerModuleService } from "../../../../modules/seller";
 import { AdminUpdateNeighborhoodType } from "../validators";
 
 /**
@@ -96,7 +96,7 @@ export const POST = async (
   req: MedusaRequest<AdminUpdateNeighborhoodType>,
   res: MedusaResponse
 ) => {
-  const sellerModuleService = req.scope.resolve(SELLER_MODULE);
+  const sellerModuleService = req.scope.resolve<SellerModuleService>(SELLER_MODULE);
   const query = req.scope.resolve(ContainerRegistrationKeys.QUERY);
 
   // Validate city exists if city_id is provided
@@ -158,7 +158,7 @@ export const POST = async (
  *   - cookie_auth: []
  */
 export const DELETE = async (req: MedusaRequest, res: MedusaResponse) => {
-  const sellerModuleService = req.scope.resolve(SELLER_MODULE);
+  const sellerModuleService = req.scope.resolve<SellerModuleService>(SELLER_MODULE);
 
   await sellerModuleService.softDeleteNeighborhoods(req.params.id);
 
