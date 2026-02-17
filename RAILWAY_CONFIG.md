@@ -56,7 +56,9 @@ yarn install --frozen-lockfile && yarn build
 
 ## 📝 See Full Documentation
 
-For detailed explanation, alternatives, and troubleshooting, see [RAILWAY_DEPLOYMENT_GUIDE.md](./RAILWAY_DEPLOYMENT_GUIDE.md)
+For detailed explanation, alternatives, and troubleshooting, see:
+- **[RAILWAY_DEPLOYMENT_GUIDE.md](./RAILWAY_DEPLOYMENT_GUIDE.md)** - Build failures and monorepo setup
+- **[RAILWAY_502_TROUBLESHOOTING.md](./RAILWAY_502_TROUBLESHOOTING.md)** - Runtime errors, 502 issues, port/host configuration
 
 ## 🚀 Next Steps
 

@@ -239,8 +239,8 @@ If you wanted to exclude seed scripts from the production build entirely (NOT RE
 ## Support
 
 If you encounter issues:
-1. Check that Railway is using the correct build command
-2. Verify the root directory setting
+1. **Build failures**: Check that Railway is using the correct build command and root directory
+2. **502 errors or no runtime logs**: See [RAILWAY_502_TROUBLESHOOTING.md](./RAILWAY_502_TROUBLESHOOTING.md) for complete diagnosis
 3. Review Railway build logs for the actual error
 4. Test the exact build sequence locally first
 5. Join the [Mercur Discord community](https://discord.gg/NTWNa49S) for support
