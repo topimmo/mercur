@@ -6,7 +6,12 @@ export const storeSellerFields = [
   'description',
   'photo',
   'address_line',
-  'city',
+  'city_id',
+  'city.id',
+  'city.name',
+  'neighborhood_id',
+  'neighborhood.id',
+  'neighborhood.name',
   'postal_code',
   'country_code',
   'tax_id'
