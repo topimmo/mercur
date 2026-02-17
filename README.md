@@ -143,6 +143,20 @@ mercur-cli dev
 - [PostgreSQL](https://git-scm.com/downloads)
 - [Git CLI](https://www.postgresql.org/download/)
 
+## Deployment
+
+For deploying Mercur to production environments:
+
+### Railway Deployment
+
+- **[Railway Deployment Guide](RAILWAY_DEPLOYMENT_GUIDE.md)** - Complete guide for deploying to Railway, including monorepo build configuration
+- **[Railway Config Reference](RAILWAY_CONFIG.md)** - Quick reference for Railway settings
+- **[Railway 502 Troubleshooting](RAILWAY_502_TROUBLESHOOTING.md)** - Diagnose and fix 502 errors, missing logs, port/host issues
+
+Common Railway issues:
+- Build failures with missing modules → See [RAILWAY_DEPLOYMENT_GUIDE.md](RAILWAY_DEPLOYMENT_GUIDE.md)
+- 502 Bad Gateway with no logs → See [RAILWAY_502_TROUBLESHOOTING.md](RAILWAY_502_TROUBLESHOOTING.md)
+
 # Resources
 
 #### Learn more about Mercur
