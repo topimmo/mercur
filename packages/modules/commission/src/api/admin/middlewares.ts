@@ -1,5 +1,8 @@
 import { MiddlewareRoute } from "@medusajs/framework";
 
-import { commissionMiddlewares } from "./commission/middlewares";
+// Disabled for directory-only mode
+// import { commissionMiddlewares } from "./commission/middlewares";
 
-export const adminMiddlewares: MiddlewareRoute[] = [...commissionMiddlewares];
+export const adminMiddlewares: MiddlewareRoute[] = [
+  // ...commissionMiddlewares - disabled for directory-only mode
+];

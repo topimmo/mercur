@@ -1,8 +1,9 @@
 import { MiddlewareRoute } from "@medusajs/framework";
-import { vendorRequestsMiddlewares } from "./requests/middlewares";
-import { vendorReturnRequestsMiddlewares } from "./return-request/middlewares";
+// Disabled for directory-only mode
+// import { vendorRequestsMiddlewares } from "./requests/middlewares";
+// import { vendorReturnRequestsMiddlewares } from "./return-request/middlewares";
 
 export const vendorMiddlewares: MiddlewareRoute[] = [
-  ...vendorRequestsMiddlewares,
-  ...vendorReturnRequestsMiddlewares,
+  // ...vendorRequestsMiddlewares - disabled for directory-only mode
+  // ...vendorReturnRequestsMiddlewares - disabled for directory-only mode
 ];
