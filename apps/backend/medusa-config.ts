@@ -25,6 +25,20 @@ if (poolMin > poolMax) {
   )
 }
 
+// Determine if SSL should be enabled for database connection
+// Enable SSL for Railway, Heroku, AWS RDS, and other cloud providers
+// Also enable in production or when DATABASE_SSL env var is explicitly set
+const requiresSsl = 
+  process.env.DATABASE_SSL === 'true' ||
+  process.env.NODE_ENV === 'production' ||
+  (process.env.DATABASE_URL && (
+    process.env.DATABASE_URL.includes('railway.app') ||
+    process.env.DATABASE_URL.includes('herokuapp.com') ||
+    process.env.DATABASE_URL.includes('rds.amazonaws.com') ||
+    process.env.DATABASE_URL.includes('azure.com') ||
+    process.env.DATABASE_URL.includes('supabase.co')
+  ))
+
 module.exports = defineConfig({
   admin: {
     disable: true // Disable built-in admin - using separate admin-panel container
@@ -37,8 +51,8 @@ module.exports = defineConfig({
         max: poolMax,
         acquireTimeoutMillis: 60000
       },
-      ...(process.env.NODE_ENV === 'production' ? {
-        connection: { 
+      ...(requiresSsl ? {
+        connection: {
           ssl: {
             rejectUnauthorized: false
           }
