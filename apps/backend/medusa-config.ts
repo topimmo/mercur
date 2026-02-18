@@ -1,4 +1,5 @@
 import { defineConfig, loadEnv } from '@medusajs/framework/utils'
+import { parseDbConnectionInfo, formatDbConnectionInfo } from './src/utils/db-connection-info.ts'
 
 loadEnv(process.env.NODE_ENV || 'development', process.cwd())
 
@@ -24,6 +25,14 @@ if (poolMin > poolMax) {
     `DB_POOL_MIN (${poolMin}) cannot be greater than DB_POOL_MAX (${poolMax})`
   )
 }
+
+// Log database connection info at startup (safe - no credentials)
+const dbInfo = parseDbConnectionInfo(process.env.DATABASE_URL, process.env.NODE_ENV)
+console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')
+console.log('🔌 Database Connection Info:')
+console.log('   ' + formatDbConnectionInfo(dbInfo))
+console.log('   Pool: min=' + poolMin + ', max=' + poolMax)
+console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')
 
 module.exports = defineConfig({
   admin: {

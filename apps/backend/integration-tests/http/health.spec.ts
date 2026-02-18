@@ -11,6 +11,31 @@ medusaIntegrationTestRunner({
         const response = await api.get('/health')
         expect(response.status).toEqual(200)
       })
+
+      it('should return database connection status', async () => {
+        const response = await api.get('/health')
+        expect(response.status).toEqual(200)
+        expect(response.data).toHaveProperty('status')
+        expect(response.data).toHaveProperty('database')
+        expect(response.data.database).toHaveProperty('connected')
+        expect(response.data.database).toHaveProperty('info')
+      })
+
+      it('should not expose database credentials', async () => {
+        const response = await api.get('/health')
+        expect(response.status).toEqual(200)
+        const responseString = JSON.stringify(response.data)
+        
+        // Ensure credentials are not in the response
+        // Check for common credential patterns
+        expect(responseString).not.toMatch(/password/i)
+        expect(responseString).not.toMatch(/[a-zA-Z0-9]+:[a-zA-Z0-9]+@/)  // user:pass@ pattern
+        
+        // Verify only safe info is included
+        expect(response.data.database.info).toBeDefined()
+        // Safe info should contain host/port/database but not credentials
+        expect(response.data.database.info).toMatch(/Host:|Database:|SSL:/)
+      })
     })
   }
 })
