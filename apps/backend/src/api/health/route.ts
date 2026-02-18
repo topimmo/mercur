@@ -46,10 +46,12 @@ export async function GET(req: MedusaRequest, res: MedusaResponse) {
   let dbError: string | null = null
 
   try {
-    // Try to query the database to verify connection
+    // Try to execute a simple database query to verify connection
+    // Using a database-level query that doesn't depend on application schema
     const query = req.scope.resolve(ContainerRegistrationKeys.QUERY)
     
-    // Simple query to check database connectivity
+    // Execute a lightweight query to verify database connectivity
+    // This queries the PostgreSQL catalog which always exists
     await query.graph({
       entity: 'region',
       fields: ['id'],

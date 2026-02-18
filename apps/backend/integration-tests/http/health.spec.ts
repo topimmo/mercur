@@ -25,9 +25,16 @@ medusaIntegrationTestRunner({
         const response = await api.get('/health')
         expect(response.status).toEqual(200)
         const responseString = JSON.stringify(response.data)
-        // Ensure no password appears in the response
-        expect(responseString).not.toContain('password')
-        expect(responseString).not.toContain('postgres:postgres')
+        
+        // Ensure credentials are not in the response
+        // Check for common credential patterns
+        expect(responseString).not.toMatch(/password/i)
+        expect(responseString).not.toMatch(/[a-zA-Z0-9]+:[a-zA-Z0-9]+@/)  // user:pass@ pattern
+        
+        // Verify only safe info is included
+        expect(response.data.database.info).toBeDefined()
+        // Safe info should contain host/port/database but not credentials
+        expect(response.data.database.info).toMatch(/Host:|Database:|SSL:/)
       })
     })
   }

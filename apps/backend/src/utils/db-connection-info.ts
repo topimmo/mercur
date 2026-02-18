@@ -34,7 +34,10 @@ export function parseDbConnectionInfo(
       sslEnabled: nodeEnv === 'production'
     }
   } catch (error) {
-    console.error('Failed to parse DATABASE_URL:', error)
+    console.error(
+      'Failed to parse DATABASE_URL. Expected format: postgresql://user:password@host:port/database',
+      error
+    )
     return null
   }
 }
