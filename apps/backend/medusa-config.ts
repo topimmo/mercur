@@ -6,6 +6,18 @@ loadEnv(process.env.NODE_ENV || 'development', process.cwd())
 const poolMin = parseInt(process.env.DB_POOL_MIN || '0', 10)
 const poolMax = parseInt(process.env.DB_POOL_MAX || '5', 10)
 
+// Validate parsed values are numbers
+if (isNaN(poolMin)) {
+  throw new Error(
+    `DB_POOL_MIN must be a valid number, got: ${process.env.DB_POOL_MIN}`
+  )
+}
+if (isNaN(poolMax)) {
+  throw new Error(
+    `DB_POOL_MAX must be a valid number, got: ${process.env.DB_POOL_MAX}`
+  )
+}
+
 // Ensure min is not greater than max
 if (poolMin > poolMax) {
   throw new Error(
