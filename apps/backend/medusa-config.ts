@@ -48,7 +48,7 @@ const requiresSsl = (() => {
       )
     } catch (error) {
       // If URL parsing fails, fall back to production check only
-      console.warn('Failed to parse DATABASE_URL for SSL detection:', error)
+      console.warn('Failed to parse DATABASE_URL for SSL detection, falling back to non-SSL mode:', error)
       return false
     }
   }
