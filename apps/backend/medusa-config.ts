@@ -25,6 +25,37 @@ if (poolMin > poolMax) {
   )
 }
 
+// Determine if SSL should be enabled for database connection
+// Enable SSL for Railway, Heroku, AWS RDS, and other cloud providers
+// Also enable in production or when DATABASE_SSL env var is explicitly set
+const requiresSsl = (() => {
+  // Explicit SSL configuration takes precedence
+  if (process.env.DATABASE_SSL === 'true') return true
+  if (process.env.NODE_ENV === 'production') return true
+  
+  // Auto-detect cloud providers from DATABASE_URL hostname
+  if (process.env.DATABASE_URL) {
+    try {
+      const dbUrl = new URL(process.env.DATABASE_URL)
+      const hostname = dbUrl.hostname.toLowerCase()
+      
+      return (
+        hostname.endsWith('.railway.app') ||
+        hostname.endsWith('.herokuapp.com') ||
+        hostname.endsWith('.rds.amazonaws.com') ||
+        hostname.endsWith('.postgres.database.azure.com') ||
+        hostname.endsWith('.supabase.co')
+      )
+    } catch (error) {
+      // If URL parsing fails, fall back to production check only
+      console.warn('Failed to parse DATABASE_URL for SSL detection, falling back to non-SSL mode:', error)
+      return false
+    }
+  }
+  
+  return false
+})()
+
 module.exports = defineConfig({
   admin: {
     disable: true // Disable built-in admin - using separate admin-panel container
@@ -37,8 +68,8 @@ module.exports = defineConfig({
         max: poolMax,
         acquireTimeoutMillis: 60000
       },
-      ...(process.env.NODE_ENV === 'production' ? {
-        connection: { 
+      ...(requiresSsl ? {
+        connection: {
           ssl: {
             rejectUnauthorized: false
           }
