@@ -2,6 +2,17 @@ import { defineConfig, loadEnv } from '@medusajs/framework/utils'
 
 loadEnv(process.env.NODE_ENV || 'development', process.cwd())
 
+// Database pool configuration with validation
+const poolMin = parseInt(process.env.DB_POOL_MIN || '0', 10)
+const poolMax = parseInt(process.env.DB_POOL_MAX || '5', 10)
+
+// Ensure min is not greater than max
+if (poolMin > poolMax) {
+  throw new Error(
+    `DB_POOL_MIN (${poolMin}) cannot be greater than DB_POOL_MAX (${poolMax})`
+  )
+}
+
 module.exports = defineConfig({
   admin: {
     disable: true // Disable built-in admin - using separate admin-panel container
@@ -10,8 +21,8 @@ module.exports = defineConfig({
     databaseUrl: process.env.DATABASE_URL,
     databaseDriverOptions: {
       pool: {
-        min: parseInt(process.env.DB_POOL_MIN || '0', 10),
-        max: parseInt(process.env.DB_POOL_MAX || '5', 10),
+        min: poolMin,
+        max: poolMax,
         acquireTimeoutMillis: 60000
       },
       ...(process.env.NODE_ENV === 'production' ? {
