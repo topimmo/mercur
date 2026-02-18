@@ -1,5 +1,5 @@
 import { defineConfig, loadEnv } from '@medusajs/framework/utils'
-import { parseDbConnectionInfo, formatDbConnectionInfo } from './src/utils/db-connection-info'
+import { parseDbConnectionInfo, formatDbConnectionInfo } from './src/utils/db-connection-info.ts'
 
 loadEnv(process.env.NODE_ENV || 'development', process.cwd())
 
