@@ -2,19 +2,49 @@ import { defineConfig, loadEnv } from '@medusajs/framework/utils'
 
 loadEnv(process.env.NODE_ENV || 'development', process.cwd())
 
+// Database pool configuration with validation
+const poolMin = parseInt(process.env.DB_POOL_MIN || '0', 10)
+const poolMax = parseInt(process.env.DB_POOL_MAX || '5', 10)
+
+// Validate parsed values are numbers
+if (isNaN(poolMin)) {
+  throw new Error(
+    `DB_POOL_MIN must be a valid number, got: ${process.env.DB_POOL_MIN}`
+  )
+}
+if (isNaN(poolMax)) {
+  throw new Error(
+    `DB_POOL_MAX must be a valid number, got: ${process.env.DB_POOL_MAX}`
+  )
+}
+
+// Ensure min is not greater than max
+if (poolMin > poolMax) {
+  throw new Error(
+    `DB_POOL_MIN (${poolMin}) cannot be greater than DB_POOL_MAX (${poolMax})`
+  )
+}
+
 module.exports = defineConfig({
   admin: {
     disable: true // Disable built-in admin - using separate admin-panel container
   },
   projectConfig: {
     databaseUrl: process.env.DATABASE_URL,
-    databaseDriverOptions: process.env.NODE_ENV === 'production' ? {
-      connection: { 
-        ssl: {
-          rejectUnauthorized: false
+    databaseDriverOptions: {
+      pool: {
+        min: poolMin,
+        max: poolMax,
+        acquireTimeoutMillis: 60000
+      },
+      ...(process.env.NODE_ENV === 'production' ? {
+        connection: { 
+          ssl: {
+            rejectUnauthorized: false
+          }
         }
-      }
-    } : undefined,
+      } : {})
+    },
     http: {
       storeCors: process.env.STORE_CORS!,
       adminCors: process.env.ADMIN_CORS!,
