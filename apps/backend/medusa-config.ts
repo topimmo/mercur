@@ -8,13 +8,20 @@ module.exports = defineConfig({
   },
   projectConfig: {
     databaseUrl: process.env.DATABASE_URL,
-    databaseDriverOptions: process.env.NODE_ENV === 'production' ? {
-      connection: { 
-        ssl: {
-          rejectUnauthorized: false
+    databaseDriverOptions: {
+      pool: {
+        min: parseInt(process.env.DB_POOL_MIN || '0', 10),
+        max: parseInt(process.env.DB_POOL_MAX || '5', 10),
+        acquireTimeoutMillis: 60000
+      },
+      ...(process.env.NODE_ENV === 'production' ? {
+        connection: { 
+          ssl: {
+            rejectUnauthorized: false
+          }
         }
-      }
-    } : undefined,
+      } : {})
+    },
     http: {
       storeCors: process.env.STORE_CORS!,
       adminCors: process.env.ADMIN_CORS!,
