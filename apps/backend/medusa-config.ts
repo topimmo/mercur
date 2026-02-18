@@ -31,6 +31,14 @@ if (poolMin > poolMax) {
 const requiresSsl = (() => {
   // Explicit SSL configuration takes precedence
   if (process.env.DATABASE_SSL === 'true') return true
+  
+  // Detect Railway environment using Railway-specific environment variables
+  // Railway Postgres (including private URLs) require SSL
+  if (process.env.RAILWAY_ENVIRONMENT || process.env.RAILWAY_PROJECT_ID) {
+    return true
+  }
+  
+  // Enable SSL in production environments
   if (process.env.NODE_ENV === 'production') return true
   
   // Auto-detect cloud providers from DATABASE_URL hostname
@@ -41,6 +49,7 @@ const requiresSsl = (() => {
       
       return (
         hostname.endsWith('.railway.app') ||
+        hostname.endsWith('.railway.internal') ||
         hostname.endsWith('.herokuapp.com') ||
         hostname.endsWith('.rds.amazonaws.com') ||
         hostname.endsWith('.postgres.database.azure.com') ||
