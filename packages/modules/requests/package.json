@@ -29,6 +29,13 @@
     },
     "./*": "./.medusa/server/src/*.js"
   },
+  "typesVersions": {
+    "*": {
+      "workflows": ["./.medusa/server/src/workflows/index.d.ts"],
+      "modules/*": ["./.medusa/server/src/modules/*/index.d.ts"],
+      "*": ["./.medusa/server/src/*.d.ts"]
+    }
+  },
   "scripts": {
     "build": "medusa plugin:build",
     "dev": "medusa plugin:develop",

@@ -48,9 +48,9 @@ module.exports = defineConfig({
     http: {
       storeCors: process.env.STORE_CORS!,
       adminCors: process.env.ADMIN_CORS!,
-
-      vendorCors: process.env.VENDOR_CORS!,
       authCors: process.env.AUTH_CORS!,
+      // @ts-expect-error: vendorCors is a custom extension used by @mercurjs/b2c-core
+      vendorCors: process.env.VENDOR_CORS!,
       jwtSecret: process.env.JWT_SECRET || 'supersecret',
       cookieSecret: process.env.COOKIE_SECRET || 'supersecret'
     }
