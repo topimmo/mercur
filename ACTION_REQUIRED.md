@@ -69,9 +69,11 @@ After updating Railway configuration:
 
 ## 📚 Documentation
 
-- Quick Reference: [RAILWAY_CONFIG.md](./RAILWAY_CONFIG.md)
-- Full Guide: [RAILWAY_DEPLOYMENT_GUIDE.md](./RAILWAY_DEPLOYMENT_GUIDE.md)
-- Backend README: [apps/backend/README.md](./apps/backend/README.md)
+- **Quick Answers:** [RAILWAY_QUICK_ANSWERS.md](./RAILWAY_QUICK_ANSWERS.md) - Direct answers to configuration questions
+- **Complete Analysis:** [RAILWAY_DEPLOYMENT_ANALYSIS.md](./RAILWAY_DEPLOYMENT_ANALYSIS.md) - Detailed workspace analysis
+- **Quick Reference:** [RAILWAY_CONFIG.md](./RAILWAY_CONFIG.md) - Configuration quick reference
+- **Full Guide:** [RAILWAY_DEPLOYMENT_GUIDE.md](./RAILWAY_DEPLOYMENT_GUIDE.md) - Comprehensive deployment guide
+- **Backend README:** [apps/backend/README.md](./apps/backend/README.md) - Backend-specific documentation
 
 ## ❓ Troubleshooting
 

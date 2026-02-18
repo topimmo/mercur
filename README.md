@@ -149,11 +149,17 @@ For deploying Mercur to production environments:
 
 ### Railway Deployment
 
-- **[Railway Deployment Guide](RAILWAY_DEPLOYMENT_GUIDE.md)** - Complete guide for deploying to Railway, including monorepo build configuration
+**📋 Quick Start:**
+- **[Railway Quick Answers](RAILWAY_QUICK_ANSWERS.md)** - Direct answers to "what is the workspace name?", "what are the exact commands?"
+
+**📖 Detailed Guides:**
+- **[Railway Deployment Analysis](RAILWAY_DEPLOYMENT_ANALYSIS.md)** - Complete workspace analysis with exact Railway configuration
+- **[Railway Deployment Guide](RAILWAY_DEPLOYMENT_GUIDE.md)** - Comprehensive guide for deploying to Railway, including monorepo build configuration
 - **[Railway Config Reference](RAILWAY_CONFIG.md)** - Quick reference for Railway settings
 - **[Railway 502 Troubleshooting](RAILWAY_502_TROUBLESHOOTING.md)** - Diagnose and fix 502 errors, missing logs, port/host issues
 
-Common Railway issues:
+**Common Railway issues:**
+- "What's the exact workspace name and commands?" → See [RAILWAY_QUICK_ANSWERS.md](RAILWAY_QUICK_ANSWERS.md)
 - Build failures with missing modules → See [RAILWAY_DEPLOYMENT_GUIDE.md](RAILWAY_DEPLOYMENT_GUIDE.md)
 - 502 Bad Gateway with no logs → See [RAILWAY_502_TROUBLESHOOTING.md](RAILWAY_502_TROUBLESHOOTING.md)
 
